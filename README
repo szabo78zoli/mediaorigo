@@ -1,3 +1,7 @@
 1. lépés:
 
 Egy üres codeigniter 3.1.11-es framework telepítés, beállítás.
+
+2. lépés:
+
+Járművek adattábla létrehozása migrációval
