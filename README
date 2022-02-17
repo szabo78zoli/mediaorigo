@@ -13,3 +13,7 @@ Járművek hozzáadás, szerkesztés, listázás megvalósítása
 4. lépés:
 
 Járművek listásáza rendszám, illetve forgalomba helyezés alapján (rendezés növekvő, csökkenő sorrendbe)
+
+5. lépés:
+
+Sofőrök adattábla létrehozása migrációval

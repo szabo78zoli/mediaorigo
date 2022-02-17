@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 17, 2022 at 10:26 AM
+-- Generation Time: Feb 17, 2022 at 12:54 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.20
 
@@ -46,6 +46,19 @@ INSERT INTO `mediaorigo_cars` (`id`, `type`, `license_plate`, `registrarion_year
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mediaorigo_drivers`
+--
+
+CREATE TABLE `mediaorigo_drivers` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `birth_year` int(4) NOT NULL,
+  `deleted` int(1) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mediaorigo_migrations`
 --
 
@@ -58,7 +71,7 @@ CREATE TABLE `mediaorigo_migrations` (
 --
 
 INSERT INTO `mediaorigo_migrations` (`version`) VALUES
-(2);
+(3);
 
 --
 -- Indexes for dumped tables
@@ -72,6 +85,12 @@ ALTER TABLE `mediaorigo_cars`
   ADD UNIQUE KEY `license_plate` (`license_plate`);
 
 --
+-- Indexes for table `mediaorigo_drivers`
+--
+ALTER TABLE `mediaorigo_drivers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -80,6 +99,12 @@ ALTER TABLE `mediaorigo_cars`
 --
 ALTER TABLE `mediaorigo_cars`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `mediaorigo_drivers`
+--
+ALTER TABLE `mediaorigo_drivers`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
