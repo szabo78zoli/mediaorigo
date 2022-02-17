@@ -4,6 +4,7 @@ class List_Car extends CI_Controller{
     public function __construct () {
 		parent::__construct();
 		$this->load->model("List_Car_Model");
+        $this->load->library('session');
     }
 
 	public function index(){
@@ -14,7 +15,34 @@ class List_Car extends CI_Controller{
 			$this->List_Car_Model->delete($posts['delete']);
 		}
 
-		$data['carList'] = $this->List_Car_Model->loadList();
+        $order = NULL;
+        $orderWay = NULL;
+
+        if($this->input->post('OrderBtn')){
+
+            if($this->session->userdata('OrderWay') == 'ASC'){
+                $orderWay = 'DESC';
+                $data['orderWay'] = 'DESC';
+            }else{
+                $orderWay = 'ASC';
+                $data['orderWay'] = 'ASC';
+            }
+            $order = $this->input->post('OrderBtn');
+
+            $this->session->set_userdata('Order', $order);
+            $this->session->set_userdata('OrderWay', $orderWay);
+
+            $data['order'] = $this->input->post('OrderBtn');
+
+        }else{
+            $order = $this->session->userdata('Order');
+            $orderWay = $this->session->userdata('OrderWay');
+
+            $data['order'] = $order;
+            $data['orderWay'] = $orderWay;
+        }
+
+		$data['carList'] = $this->List_Car_Model->loadList($order, $orderWay);
 
 		$data['page_title'] = 'Autók listája';
 

@@ -9,3 +9,7 @@ Járművek adattábla létrehozása migrációval
 3. lépés:
 
 Járművek hozzáadás, szerkesztés, listázás megvalósítása
+
+4. lépés:
+
+Járművek listásáza rendszám, illetve forgalomba helyezés alapján (rendezés növekvő, csökkenő sorrendbe)

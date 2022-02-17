@@ -5,8 +5,13 @@ class List_Car_Model extends CI_Model{
 		parent::__construct();
 	}
 
-	public function loadList(){
+	public function loadList($order, $orderWay){
 		$this->db->where("deleted", 0);
+
+        if(!empty($order)){
+            $this->db->order_by($order, $orderWay);
+        }
+
 		$query = $this->db->get("cars");
 
 		if ($query->num_rows() > 0){
