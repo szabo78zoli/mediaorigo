@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 18, 2022 at 10:01 PM
+-- Generation Time: Feb 18, 2022 at 11:08 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.20
 
@@ -34,17 +34,20 @@ CREATE TABLE `mediaorigo_cars` (
   `registrarion_year` int(4) NOT NULL,
   `deleted` int(1) UNSIGNED NOT NULL,
   `category` varchar(25) NOT NULL,
-  `passenger` int(1) UNSIGNED NOT NULL
+  `passenger` int(1) UNSIGNED DEFAULT NULL,
+  `weight` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mediaorigo_cars`
 --
 
-INSERT INTO `mediaorigo_cars` (`id`, `type`, `license_plate`, `registrarion_year`, `deleted`, `category`, `passenger`) VALUES
-(1, 'Lada', 'ABC-123', 1988, 0, '1', 0),
-(2, 'Isuzu D-Max', 'BVD-456', 2019, 0, '2', 0),
-(3, 'Volvo FH 16', 'CVF-678', 2018, 0, '3', 0);
+INSERT INTO `mediaorigo_cars` (`id`, `type`, `license_plate`, `registrarion_year`, `deleted`, `category`, `passenger`, `weight`) VALUES
+(1, 'Lada', 'ABC-123', 1988, 0, '1', 0, NULL),
+(2, 'Isuzu D-Max', 'BVD-456', 2019, 0, '2', 0, 1000),
+(3, 'Volvo FH 16', 'CVF-678', 2018, 0, '3', 0, NULL),
+(4, 'BMW X5', 'STR-543', 2021, 0, '1', 5, NULL),
+(5, 'Ford Transit', 'LND-954', 2016, 0, '2', 0, 1200);
 
 -- --------------------------------------------------------
 
@@ -204,7 +207,7 @@ ALTER TABLE `mediaorigo_type_of_cars`
 -- AUTO_INCREMENT for table `mediaorigo_cars`
 --
 ALTER TABLE `mediaorigo_cars`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `mediaorigo_cars_drivers_assembly`

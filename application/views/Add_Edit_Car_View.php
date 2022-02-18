@@ -1,3 +1,30 @@
+<script>
+    $(document).ready(function() {
+        if($('#category').val() == 1){
+            $('.passenger-form').show();
+            $('.weight-form').hide();
+            $('#weight').val(null);
+        }
+        if($('#category').val() == 2 || $('#category').val() == 3){
+            $('.passenger-form').hide();
+            $('#passenger').val(null);
+            $('.weight-form').show();
+        }
+
+        $('#category').change(function (){
+            if($(this).val() == 1){
+                $('.passenger-form').show();
+                $('.weight-form').hide();
+                $('#weight').val(null);
+            }
+            if($(this).val() == 2 || $(this).val() == 3){
+                $('.passenger-form').hide();
+                $('#passenger').val(null);
+                $('.weight-form').show();
+            }
+        });
+    });
+</script>
 <div class="container">
 	<div class="row">
 		<div class="col-12 text-center">
@@ -48,6 +75,20 @@
                     </select>
                     <span style="color: #ff0000">
 					<?php echo form_error('category'); ?>
+					</span>
+                </div>
+                <div class="form-group passenger-form" style="display: none;">
+                    <label for="passenger">Utasok száma:</label>
+                    <input type="number" name="passenger" id="passenger" class="form-control" placeholder="1" value="<?php if(isset($passenger)){echo $passenger; }else{echo set_value('passenger');} ?>">
+                    <span style="color: #ff0000">
+					<?php echo form_error('passenger'); ?>
+					</span>
+                </div>
+                <div class="form-group weight-form" style="display: none;">
+                    <label for="weight">Teher maximális súlya:</label>
+                    <input type="number" name="weight" id="weight"  class="form-control" placeholder="100" value="<?php if(isset($weight)){echo $weight; }else{echo set_value('weight');} ?>">
+                    <span style="color: #ff0000">
+					<?php echo form_error('weight'); ?>
 					</span>
                 </div>
 				<button type="submit" class="btn btn-primary">Rögzítés</button>

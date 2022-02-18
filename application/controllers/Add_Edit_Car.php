@@ -59,6 +59,8 @@ class Add_Edit_Car extends CI_Controller{
             $data['license_plate'] = $loadedData['license_plate'];
             $data['registrarion_year'] = $loadedData['registrarion_year'];
             $data['selectedCategory'] = $loadedData['category'];
+            $data['passenger'] = $loadedData['passenger'];
+            $data['weight'] = $loadedData['weight'];
 		}
 
 		$data['page_title'] = 'Autó adatainak módosítása';

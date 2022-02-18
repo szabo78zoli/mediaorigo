@@ -103,13 +103,18 @@ class Add_Edit_Car_Driver_Assembly_Model extends CI_Model{
 	}
 
     public function getCars(){
-        $this->db->select("id, type");
+        $this->db->select("id, type, license_plate, passenger, weight");
         $this->db->where("deleted", 0);
         $query = $this->db->get("cars");
 
         if ($query->num_rows() > 0){
             foreach ($query->result_array() as $value){
-                $row[$value['id']] = $value['type'];
+                if($value['passenger'] > 0){
+                    $row[$value['id']] = $value['type']." ".$value['license_plate']." (".$value['passenger']." fő)";
+                }elseif($value['weight'] > 0){
+                    $row[$value['id']] = $value['type']." ".$value['license_plate']." (".$value['weight']." kg)";
+                }
+
             }
             return $row;
         }

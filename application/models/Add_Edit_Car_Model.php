@@ -10,11 +10,13 @@ class Add_Edit_Car_Model extends CI_Model{
 		$fields['license_plate'] = $posts['license_plate'];
 		$fields['registrarion_year'] = $posts['registrarion_year'];
 		$fields['category'] = $posts['category'];
+		$fields['passenger'] = $posts['passenger'];
+		$fields['weight'] = $posts['weight'];
 		$this->db->insert('cars', $fields);
 	}
 
 	public function load($id){
-		$this->db->select("type, license_plate, registrarion_year, category");
+		$this->db->select("type, license_plate, registrarion_year, category, passenger, weight");
 		$this->db->where("id", $id);
 		$this->db->where("deleted", 0);
 		$query = $this->db->get("cars");

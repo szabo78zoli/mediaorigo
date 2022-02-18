@@ -8,4 +8,28 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
+    <nav class="navbar navbar-expand-sm bg-light">
 
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/index.php/add_edit_car">Autó rögzítése</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/index.php/list_car">Autók listája</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/index.php/add_edit_driver">Sofőr rögzítése</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/index.php/list_driver">Sofőrök listája</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/index.php/add_edit_car_driver_assembly">Autó, sofőr összerendelés rögzítése</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/index.php/list_driver_assembly">Autó, sofőr összerendelések listája</a>
+            </li>
+        </ul>
+
+    </nav>
