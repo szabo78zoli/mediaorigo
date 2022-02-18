@@ -17,3 +17,8 @@ Járművek listásáza rendszám, illetve forgalomba helyezés alapján (rendez�
 5. lépés:
 
 Sofőrök adattábla létrehozása migrációval
+
+6. lépés:
+
+Sofőrök listásáza név, illetve születési év alapján (rendezés növekvő, csökkenő sorrendbe)
+

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 17, 2022 at 12:54 PM
+-- Generation Time: Feb 17, 2022 at 02:45 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.20
 
@@ -56,6 +56,14 @@ CREATE TABLE `mediaorigo_drivers` (
   `deleted` int(1) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `mediaorigo_drivers`
+--
+
+INSERT INTO `mediaorigo_drivers` (`id`, `name`, `birth_year`, `deleted`) VALUES
+(1, 'Kiss Pista', 1980, 0),
+(2, 'Nagy Antal', 1970, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -104,7 +112,7 @@ ALTER TABLE `mediaorigo_cars`
 -- AUTO_INCREMENT for table `mediaorigo_drivers`
 --
 ALTER TABLE `mediaorigo_drivers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
