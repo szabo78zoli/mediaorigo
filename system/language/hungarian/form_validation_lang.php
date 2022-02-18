@@ -25,6 +25,7 @@ $lang['is_natural_no_zero']	= "A(z) %s mező csak pozitív egész számokat tart
 $lang['decimal']			= "A(z) %s mező csak tizedes számokat tartalmazhat.";
 $lang['less_than']			= "A(z) %s mező értéke kisebb, mint %s.";
 $lang['greater_than']		= "A(z) %s mező értéke nagyobb, mint %s.";
+$lang['greater_than_now']		= "A dátumnak a mia napnál nagyobbnak kellelennie!";
 
 
 /* End of file form_validation_lang.php */

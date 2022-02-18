@@ -1595,4 +1595,14 @@ class CI_Form_validation {
 		return $this;
 	}
 
+    function greater_than_now($str)
+    {
+        $date_now = date("Y-m-d"); // this format is string comparable
+
+        if ($date_now < $str) {
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
 }

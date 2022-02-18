@@ -57,6 +57,10 @@ $route['add_edit_driver'] = 'Add_Edit_Driver';
 $route['add_edit_driver/(:num)'] = 'Add_Edit_Driver/load/$1';
 $route['list_driver'] = 'List_Driver';
 
+$route['add_edit_car_driver_assembly'] = 'Add_Edit_Car_Driver_Assembly';
+$route['add_edit_car_driver_assembly/(:num)'] = 'Add_Edit_Car_Driver_Assembly/load/$1';
+$route['list_driver_assembly'] = 'List_Car_Driver_Assembly';
+
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
