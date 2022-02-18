@@ -22,14 +22,17 @@ class Add_Edit_Car_Driver_Assembly extends CI_Controller{
 
 		if ($this->form_validation->run() == TRUE) {
             $checkAssemblyMatch = $this->checkAssemblyMatch($posts['cars'], $posts['drivers'], $posts['date']);
+            $checkLicense = $this->checkLicense($posts['cars'], $posts['drivers']);
 
-            if($checkAssemblyMatch){
+            if(!$checkAssemblyMatch){
+
+                $data['error'] = 'Az adott napra már az autó, vagy a sofőr be van osztva!';
+            }elseif(!$checkLicense){
+                $data['error'] = 'A sofőr jogosítványával ez a jármű nem vezethető!';
+            }else{
                 $this->Add_Edit_Car_Driver_Assembly_Model->save($posts);
                 $data['success'] = 'Sikeres adatrögzítés!';
-            }else{
-                $data['error'] = 'Az adott napra már az autó, vagy a sofőr be van osztva!';
             }
-
 		}
 		elseif($this->form_validation->run() == FALSE && !empty($posts)) {
 			$data['error'] = 'Hiba történt az adatrögzítés közben.';
@@ -88,5 +91,18 @@ class Add_Edit_Car_Driver_Assembly extends CI_Controller{
         }else{
             return true;
         }
+    }
+
+    public function checkLicense($car, $driver){
+
+        $driversCategory= $this->Add_Edit_Car_Driver_Assembly_Model->loadDriversCategory($driver);
+        $carCategory= $this->Add_Edit_Car_Driver_Assembly_Model->loadCarCategory($car);
+
+        if($driversCategory >= $carCategory){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }

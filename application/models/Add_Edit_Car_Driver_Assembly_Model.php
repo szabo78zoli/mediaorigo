@@ -58,6 +58,41 @@ class Add_Edit_Car_Driver_Assembly_Model extends CI_Model{
         }
     }
 
+    public function loadDriversCategory($driver){
+        $this->db->select('category');
+        $this->db->join('driving_license', 'drivers.driving_license = driving_license.id');
+        $this->db->where('drivers.id', $driver);
+        $this->db->where("drivers.deleted", 0);
+        $query = $this->db->get("drivers");
+
+        if ($query->num_rows() > 0){
+            foreach ($query->result_array() as $value){
+                $row = $value['category'];
+            }
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function loadCarCategory($car){
+        $this->db->select('category');
+        $this->db->where('id', $car);
+        $this->db->where("deleted", 0);
+        $query = $this->db->get("cars");
+
+        if ($query->num_rows() > 0){
+            foreach ($query->result_array() as $value){
+                $row = $value['category'];
+            }
+            return $row;
+        }
+        else{
+            return false;
+        }
+    }
+
 	public  function update($posts, $id){
         $updatedData['car_id'] = $posts['cars'];
         $updatedData['driver_id'] = $posts['drivers'];

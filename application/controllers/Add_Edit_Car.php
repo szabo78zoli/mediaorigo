@@ -11,10 +11,12 @@ class Add_Edit_Car extends CI_Controller{
 
 		$data = array();
 		$posts = $this->input->post();
+        $data['category'] = $this->Add_Edit_Car_Model->getCategory();
 
 		$this->form_validation->set_rules("type", "típus", "required");
 		$this->form_validation->set_rules("license_plate", "rendszám", "required");
 		$this->form_validation->set_rules("registrarion_year", "forgalomba helyezés éve", "required");
+        $this->form_validation->set_rules("category", "kategória", "required|greater_than[0]", array("greater_than" => "A kategória kiválasztása kötelező!"));
 
 		if ($this->form_validation->run() == TRUE) {
 			$data['success'] = 'Success';
@@ -35,20 +37,28 @@ class Add_Edit_Car extends CI_Controller{
 
 		$data = array();
 		$posts = $this->input->post();
+        $data['category'] = $this->Add_Edit_Car_Model->getCategory();
 
 		$this->form_validation->set_rules("type", "típus", "required");
 		$this->form_validation->set_rules("license_plate", "rendszám", "required");
 		$this->form_validation->set_rules("registrarion_year", "forgalomba helyezés éve", "required");
+        $this->form_validation->set_rules("category", "kategória", "required|greater_than[0]", array("greater_than" => "A kategória kiválasztása kötelező!"));
 
 		if ($this->form_validation->run() == TRUE) {
 			$data['success'] = 'Success';
 			$this->Add_Edit_Car_Model->update($posts, $id);
+
+            $data['selectedCategory'] = $data['category'];
 		}
 		elseif($this->form_validation->run() == FALSE && !empty($posts)) {
 			$data['error'] = 'Error';
 		}
 		else{
-			$data = $this->Add_Edit_Car_Model->load($id);
+			$loadedData = $this->Add_Edit_Car_Model->load($id);
+            $data['type'] = $loadedData['type'];
+            $data['license_plate'] = $loadedData['license_plate'];
+            $data['registrarion_year'] = $loadedData['registrarion_year'];
+            $data['selectedCategory'] = $loadedData['category'];
 		}
 
 		$data['page_title'] = 'Autó adatainak módosítása';

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_Add_Tbl_Cars_Drivers_Assembly extends CI_Migration {
+class Migration_Add_Tbl_Driving_License extends CI_Migration {
 
     public function up()
     {
@@ -14,20 +14,15 @@ class Migration_Add_Tbl_Cars_Drivers_Assembly extends CI_Migration {
                 'auto_increment' => TRUE,
                 'null' => FALSE,
             ),
-            'car_id' => array(
-                'type' => 'INT',
-                'constraint' => 10,
-                'unsigned' => TRUE,
+            'name' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 50,
                 'null' => FALSE,
             ),
-            'driver_id' => array(
+            'category' => array(
                 'type' => 'INT',
-                'constraint' => 10,
+                'constraint' => 1,
                 'unsigned' => TRUE,
-                'null' => FALSE,
-            ),
-            'date' => array(
-                'type' => 'DATE',
                 'null' => FALSE,
             ),
             'deleted' => array(
@@ -36,16 +31,13 @@ class Migration_Add_Tbl_Cars_Drivers_Assembly extends CI_Migration {
                 'unsigned' => TRUE,
                 'null' => FALSE,
             ),
-        ),
-        'CONSTRAINT car_ibfk_1 FOREIGN KEY(`car_id`) REFERENCES `cars`(`id`)',
-        'CONSTRAINT driver_ibfk_1 FOREIGN KEY(`driver_id`) REFERENCES `drivers`(`id`)');
-
+        ));
         $this->dbforge->add_key('id', TRUE);
-            $this->dbforge->create_table('cars_drivers_assembly');
+        $this->dbforge->create_table('driving_license');
     }
 
     public function down()
     {
-        $this->dbforge->drop_table('cars_drivers_assembly');
+        $this->dbforge->drop_table('driving_license');
     }
 }

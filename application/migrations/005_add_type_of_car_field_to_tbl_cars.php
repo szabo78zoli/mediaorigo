@@ -2,15 +2,14 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_Add_Deleted_Field_To_Tbl_Cars extends CI_Migration {
+class Migration_Add_Type_Of_Car_Field_To_Tbl_Cars extends CI_Migration {
 
 	public function up()
 	{
 		$fields = array(
-			'deleted' => array(
-				'type' => 'INT',
-				'constraint' => 1,
-				'unsigned' => TRUE,
+			'category' => array(
+				'type' => 'VARCHAR',
+				'constraint' => 25,
 				'null' => FALSE,
 			),
 		);

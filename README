@@ -29,3 +29,7 @@ Sofőrök, autók összerendelés adattábla létrehozása migrációval
 8. lépés:
 
 Sofőrök, autók összerendelésének listázása, rendezési lehetőséggel
+
+8. lépés:
+
+Sofőrök bővítése jogosítvány típusával, autók bővítése autó típusával, valamint az összerendezésnél figyelni azt, hogy a kiválasztott sofőrnek van-e jogosítványa a kiválasztott autó vezetéséhez

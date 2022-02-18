@@ -38,6 +38,18 @@
 					<?php echo form_error('registrarion_year'); ?>
 					</span>
 				</div>
+                <div class="form-group">
+                    <label for="type">Kategória:</label>
+                    <select name="category" id="category" class="form-control" >
+                        <option value="0">Kérem, válasszon!</option>
+                        <?php foreach($category as $key => $row){?>
+                            <option value="<?php echo $key; ?>" <?php if(isset($selectedCategory) && $selectedCategory == $key){echo 'selected';} echo  set_select('category', $key); ?> ><?php echo $row; ?></option>
+                        <?php } ?>
+                    </select>
+                    <span style="color: #ff0000">
+					<?php echo form_error('category'); ?>
+					</span>
+                </div>
 				<button type="submit" class="btn btn-primary">Rögzítés</button>
 			</form>
 		</div>
