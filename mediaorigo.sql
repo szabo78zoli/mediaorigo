@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database:3306
--- Generation Time: Feb 18, 2022 at 11:08 PM
+-- Generation Time: Feb 20, 2022 at 11:02 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.20
 
@@ -43,11 +43,9 @@ CREATE TABLE `mediaorigo_cars` (
 --
 
 INSERT INTO `mediaorigo_cars` (`id`, `type`, `license_plate`, `registrarion_year`, `deleted`, `category`, `passenger`, `weight`) VALUES
-(1, 'Lada', 'ABC-123', 1988, 0, '1', 0, NULL),
-(2, 'Isuzu D-Max', 'BVD-456', 2019, 0, '2', 0, 1000),
-(3, 'Volvo FH 16', 'CVF-678', 2018, 0, '3', 0, NULL),
-(4, 'BMW X5', 'STR-543', 2021, 0, '1', 5, NULL),
-(5, 'Ford Transit', 'LND-954', 2016, 0, '2', 0, 1200);
+(1, 'Lada', 'ABC-124', 1989, 0, '1', 5, 0),
+(2, 'Isuzu D-max', 'ASD-444', 2020, 0, '2', 0, 1000),
+(3, 'Volvo FH-16', 'SDA-234', 2021, 0, '3', 0, 25000);
 
 -- --------------------------------------------------------
 
@@ -68,19 +66,35 @@ CREATE TABLE `mediaorigo_cars_drivers_assembly` (
 --
 
 INSERT INTO `mediaorigo_cars_drivers_assembly` (`id`, `car_id`, `driver_id`, `date`, `deleted`) VALUES
-(4, 2, 2, '2022-03-06', 0),
-(5, 2, 2, '2022-03-06', 0),
-(6, 2, 2, '2022-03-06', 0),
-(7, 2, 2, '2022-03-07', 0),
-(8, 2, 2, '2022-03-07', 0),
-(9, 2, 2, '2022-03-08', 0),
-(10, 2, 2, '2022-03-08', 0),
-(11, 2, 2, '2022-03-08', 0),
-(12, 2, 2, '2022-03-08', 0),
-(13, 2, 1, '2022-03-08', 0),
-(14, 2, 1, '2022-03-09', 0),
-(15, 2, 1, '2022-03-09', 0),
-(16, 1, 2, '2022-03-10', 0);
+(1, 1, 1, '2022-03-06', 0),
+(2, 3, 3, '2022-03-07', 0),
+(3, 3, 3, '2022-03-09', 0),
+(4, 2, 2, '2022-03-10', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mediaorigo_deliveries`
+--
+
+CREATE TABLE `mediaorigo_deliveries` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `car_id` int(10) UNSIGNED NOT NULL,
+  `customer_name` varchar(50) NOT NULL,
+  `passenger` int(1) UNSIGNED DEFAULT NULL,
+  `weight` int(10) UNSIGNED DEFAULT NULL,
+  `place_of_recruitment` varchar(50) NOT NULL,
+  `delivery_date` date NOT NULL,
+  `deleted` int(1) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `mediaorigo_deliveries`
+--
+
+INSERT INTO `mediaorigo_deliveries` (`id`, `car_id`, `customer_name`, `passenger`, `weight`, `place_of_recruitment`, `delivery_date`, `deleted`) VALUES
+(1, 3, 'Nagy Aladár', 0, 120, '1010 Budapest Kiss u. 9.', '2022-03-09', 0),
+(2, 1, 'Kiss elemér', 2, 0, '1012 Budapest Hegyalja út 87', '2022-03-06', 0);
 
 -- --------------------------------------------------------
 
@@ -101,8 +115,9 @@ CREATE TABLE `mediaorigo_drivers` (
 --
 
 INSERT INTO `mediaorigo_drivers` (`id`, `name`, `birth_year`, `deleted`, `driving_license`) VALUES
-(1, 'Tóth Imre', 1998, 0, '3'),
-(2, 'Tóth Ferenc', 1975, 0, '1');
+(1, 'Tóth Imre', 1980, 0, '1'),
+(2, 'Tóth Ferenc', 1981, 0, '2'),
+(3, 'Kiss Antal', 1975, 0, '3');
 
 -- --------------------------------------------------------
 
@@ -141,7 +156,7 @@ CREATE TABLE `mediaorigo_migrations` (
 --
 
 INSERT INTO `mediaorigo_migrations` (`version`) VALUES
-(9);
+(10);
 
 -- --------------------------------------------------------
 
@@ -182,6 +197,12 @@ ALTER TABLE `mediaorigo_cars_drivers_assembly`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mediaorigo_deliveries`
+--
+ALTER TABLE `mediaorigo_deliveries`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `mediaorigo_drivers`
 --
 ALTER TABLE `mediaorigo_drivers`
@@ -207,19 +228,25 @@ ALTER TABLE `mediaorigo_type_of_cars`
 -- AUTO_INCREMENT for table `mediaorigo_cars`
 --
 ALTER TABLE `mediaorigo_cars`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mediaorigo_cars_drivers_assembly`
 --
 ALTER TABLE `mediaorigo_cars_drivers_assembly`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `mediaorigo_deliveries`
+--
+ALTER TABLE `mediaorigo_deliveries`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mediaorigo_drivers`
 --
 ALTER TABLE `mediaorigo_drivers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mediaorigo_driving_license`
