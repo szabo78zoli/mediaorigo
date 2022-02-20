@@ -59,8 +59,18 @@ class Add_Edit_Car_Driver_Assembly extends CI_Controller{
         $this->form_validation->set_rules("date", "dátum", "required|greater_than_now");
 
 		if ($this->form_validation->run() == TRUE) {
-			$data['success'] = 'Success';
-			$this->Add_Edit_Car_Driver_Assembly_Model->update($posts, $id);
+            $checkAssemblyMatch = $this->checkAssemblyMatch($posts['cars'], $posts['drivers'], $posts['date'], $id);
+            $checkLicense = $this->checkLicense($posts['cars'], $posts['drivers']);
+
+            if(!$checkAssemblyMatch){
+
+                $data['error'] = 'Az adott napra már az autó, vagy a sofőr be van osztva!';
+            }elseif(!$checkLicense){
+                $data['error'] = 'A sofőr jogosítványával ez a jármű nem vezethető!';
+            }else{
+                $this->Add_Edit_Car_Driver_Assembly_Model->update($posts, $id);
+                $data['success'] = 'Sikeres adatrögzítés!';
+            }
 
             $data['selectedCar'] = $data['cars'];
             $data['selectedDriver'] = $data['drivers'];
@@ -82,9 +92,14 @@ class Add_Edit_Car_Driver_Assembly extends CI_Controller{
 		$this->load->view('Footer_View');
 	}
 
-    public function checkAssemblyMatch($car, $driver, $date){
-        $loadAssemblyCarMatch = $this->Add_Edit_Car_Driver_Assembly_Model->loadAssemblyCarMatch($car, $date);
-        $loadAssemblyDriverMatch = $this->Add_Edit_Car_Driver_Assembly_Model->loadAssemblyDriverMatch($driver, $date);
+    public function checkAssemblyMatch($car, $driver, $date, $id = NULL){
+        if($id){
+            $loadAssemblyCarMatch = $this->Add_Edit_Car_Driver_Assembly_Model->loadAssemblyCarMatchModify($car, $date, $id);
+            $loadAssemblyDriverMatch = $this->Add_Edit_Car_Driver_Assembly_Model->loadAssemblyDriverMatchModify($driver, $date, $id);
+        }else{
+            $loadAssemblyCarMatch = $this->Add_Edit_Car_Driver_Assembly_Model->loadAssemblyCarMatch($car, $date);
+            $loadAssemblyDriverMatch = $this->Add_Edit_Car_Driver_Assembly_Model->loadAssemblyDriverMatch($driver, $date);
+        }
 
         if($loadAssemblyCarMatch || $loadAssemblyDriverMatch){
             return false;

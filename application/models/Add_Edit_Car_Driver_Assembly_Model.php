@@ -58,6 +58,37 @@ class Add_Edit_Car_Driver_Assembly_Model extends CI_Model{
         }
     }
 
+    public function loadAssemblyCarMatchModify($car, $date, $id){
+        $this->db->select("car_id, driver_id, date");
+        $this->db->where('id !='.$id);
+        $this->db->where('car_id', $car);
+        $this->db->where("date", $date);
+        $this->db->where("deleted", 0);
+        $query = $this->db->get("cars_drivers_assembly");
+        if ($query->num_rows() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function loadAssemblyDriverMatchModify($driver, $date, $id){
+        $this->db->select("car_id, driver_id, date");
+        $this->db->where('id !='.$id);
+        $this->db->where('driver_id', $driver);
+        $this->db->where("date", $date);
+        $this->db->where("deleted", 0);
+        $query = $this->db->get("cars_drivers_assembly");
+
+        if ($query->num_rows() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public function loadDriversCategory($driver){
         $this->db->select('category');
         $this->db->join('driving_license', 'drivers.driving_license = driving_license.id');

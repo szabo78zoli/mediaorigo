@@ -6,6 +6,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	</head>
 	<body>
     <nav class="navbar navbar-expand-sm bg-light">
@@ -29,6 +30,15 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/index.php/list_driver_assembly">Autó, sofőr összerendelések listája</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/index.php/add_edit_delivery">Szállítás rögzítése</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/index.php/list_delivery">Szállítások  listája</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/index.php/list_car_daily_data">Autók adatai napi bontásban</a>
             </li>
         </ul>
 

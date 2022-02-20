@@ -78,7 +78,7 @@
                         <td><?php echo $car['driverName']; ?></td>
                         <td><?php echo $car['date']; ?></td>
                         <td><a href="/index.php/add_edit_car_driver_assembly/<?php echo $car['id']; ?>" >Szerkesztés</a></td>
-                        <td><button type="submit" name="delete" value="<?php echo $car['id']; ?>">Törlés</button></td>
+                        <td><button type="submit" name="delete" value="<?php echo $car['id']; ?>" onclick="return window.confirm('Biztosan törli az elemet?');" >Törlés</button></td>
                     </tr>
 					<?php }?>
 					<?php }?>

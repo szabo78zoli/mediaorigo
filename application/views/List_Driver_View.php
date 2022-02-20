@@ -50,7 +50,7 @@
                         <td><?php echo $car['name']; ?></td>
                         <td><?php echo $car['birth_year']; ?></td>
                         <td><a href="/index.php/add_edit_driver/<?php echo $car['id']; ?>" >Szerkesztés</a></td>
-                        <td><button type="submit" name="delete" value="<?php echo $car['id']; ?>">Törlés</button></td>
+                        <td><button type="submit" name="delete" value="<?php echo $car['id']; ?>" onclick="return window.confirm('Biztosan törli az elemet?');" >Törlés</button></td>
                     </tr>
 					<?php }?>
 					<?php }?>

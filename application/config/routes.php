@@ -49,6 +49,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['home'] = 'Home';
+
 $route['add_edit_car'] = 'Add_Edit_Car';
 $route['add_edit_car/(:num)'] = 'Add_Edit_Car/load/$1';
 $route['list_car'] = 'List_Car';
@@ -60,6 +62,14 @@ $route['list_driver'] = 'List_Driver';
 $route['add_edit_car_driver_assembly'] = 'Add_Edit_Car_Driver_Assembly';
 $route['add_edit_car_driver_assembly/(:num)'] = 'Add_Edit_Car_Driver_Assembly/load/$1';
 $route['list_driver_assembly'] = 'List_Car_Driver_Assembly';
+
+$route['add_edit_delivery'] = 'Add_Edit_Delivery';
+$route['add_edit_delivery/(:num)'] = 'Add_Edit_Delivery/load/$1';
+$route['list_delivery'] = 'List_Delivery';
+
+$route['car_property_check/(:num)'] = 'Car_Property_Check/index/$1';
+
+$route['list_car_daily_data'] = 'List_Car_Daily_Data';
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
